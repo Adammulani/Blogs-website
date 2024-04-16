@@ -2,6 +2,10 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <div>Header</div>
+    <div>
+        <header>
+            Adam's Blogs
+        </header>
+    </div>
   )
 }
