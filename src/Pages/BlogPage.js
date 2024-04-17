@@ -5,6 +5,7 @@ import { baseUrl } from '../baseUrl';
 import { Header } from '../components/Header';
 import { Spinner } from '../components/Spinner';
 import { BlogDetails } from '../components/BlogDetails';
+import { Pagination } from '../components/Pagination';
 
 export const BlogPage = () => {
     const newBaseUrl="https://codehelp-apis.vercel.app/api/"
@@ -45,17 +46,22 @@ export const BlogPage = () => {
     },[location.pathname])
     
   return (
-    <div>
+    <div className='w-full h-screen   flex flex-col justify-center items-center'>
         <Header/>
-        <button onClick={()=> navigation(-1)}>
-            Back
-        </button>
+        <div className='mt-[850px]  w-11/12 max-w-[650px] py-8 flex flex-col gap-y-7  justify-center items-center h-screen'>
+        
         {
             loading ? <Spinner/> : 
             (blog?(
-                <div>
+                <div className=' '>
                     <BlogDetails post={blog}/>
-                    <h2>Related Blogs</h2>
+                    <div className='w-11/12 max-w-[650px] items-center mt-4 mb-4 flex gap-x-4'>
+                    <button className='rounded-md border-2 py-1 px-4' onClick={()=> navigation(-1)}>
+                         Back
+                     </button>
+                    <h2 className='font-bold '>Related Blogs</h2>
+                   
+                        </div>
                     {
                         relatedBlogs.map((post)=>(
                             
@@ -69,6 +75,9 @@ export const BlogPage = () => {
                     
             ):(<p>No blog found</p>))
         }
+        </div>
+        <Pagination/>
+       
     </div>
   )
 }
